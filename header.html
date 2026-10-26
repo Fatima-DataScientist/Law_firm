@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo Cussen - Navigation Header</title>
+    <style>
+        /* Base Resets & Layout Settings */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        :root {
+            --color-dark: #1e1e1e;
+            --color-light-bg: #f8f9fa;
+            --color-border: #e2e8f0;
+            --color-text-muted: #64748b;
+            --color-plt: #6b46c1;
+            --color-cpd: #f97316;
+            --color-psc: #2563eb;
+            --transition-speed: 0.3s;
+        }
+
+        /* Header Outer Wrapper */
+        .header-container {
+            position: relative;
+            width: 100%;
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Toggle Button */
+        .menu-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+
+        .menu-icon-wrapper {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hamburger, .hamburger::before, .hamburger::after {
+            content: '';
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--color-dark);
+            position: absolute;
+            transition: transform var(--transition-speed);
+        }
+
+        .hamburger::before { transform: translateY(-5px); }
+        .hamburger::after { transform: translateY(5px); }
+
+        .close-x {
+            display: none;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* Open State for Toggle Button */
+        .menu-btn.active .hamburger { background: transparent; }
+        .menu-btn.active .hamburger::before,
+        .menu-btn.active .hamburger::after { display: none; }
+        .menu-btn.active .close-x { display: block; }
+
+        /* Logo Branding */
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--color-dark);
+            line-height: 1.1;
+        }
+
+        .logo-subtitle {
+            font-size: 0.65rem;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted);
+        }
+
+        /* Top Right Action Items */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+            color: var(--color-dark);
+        }
+
+        .icon-btn:hover { background-color: var(--color-light-bg); }
+
+        .search-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            background-color: var(--color-dark);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Dynamic Flyout Drawer */
+        .mega-menu-drawer {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            border-top: 1px solid var(--color-border);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .mega-menu-drawer.is-open {
+            display: flex;
+        }
+
+        /* Sidebar Options inside Flyout */
+        .drawer-sidebar {
+            width: 320px;
+            background-color: var(--color-light-bg);
+            padding: 1.5rem;
+            border-right: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .side-menu-list {
+            list-style: none;
+        }
+
+        .menu-item {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .menu-item a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0.5rem;
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 600;
+        }
+
+        .menu-item.active {
+            background-color: #ffffff;
+            border-radius: 6px;
+        }
+
+        .arrow-icon { opacity: 0.4; }
+        .menu-item.active .arrow-icon { opacity: 1; }
+
+        /* Sidebar Bottom Content Hub Tile */
+        .content-hub-card {
+            display: block;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 2rem;
+            text-decoration: none;
+        }
+
+        .content-hub-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hub-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.65);
+            color: #ffffff;
+            padding: 0.5rem 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Dynamic Content Pane */
+        .drawer-content-pane {
+            flex: 1;
+            padding: 2rem 3rem;
+        }
+
+        .menu-pane-content {
+            display: none;
+        }
+
+        .menu-pane-content.active {
+            display: block;
+        }
+
+        .pane-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .pane-header p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Content Columns Layout */
+        .pane-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .pane-grid.single-col {
+            grid-template-columns: 1fr;
+        }
+
+        .pane-col h4 {
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .pane-col ul {
+            list-style: none;
+        }
+
+        .pane-col li {
+            margin-bottom: 0.5rem;
+        }
+
+        .pane-col a {
+            color: var(--color-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .pane-col a:hover {
+            text-decoration: underline;
+        }
+
+        /* CPD Search Block */
+        .cpd-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .cpd-search-box label {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .search-input-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+            gap: 0.5rem;
+        }
+
+        .search-input-wrapper input {
+            border: none;
+            outline: none;
+            width: 150px;
+        }
+
+        .btn-dark-sm {
+            background: var(--color-dark);
+            color: #fff;
+            border: none;
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Pane Footer Actions */
+        .pane-footer-section {
+            border-top: 1px solid var(--color-border);
+            padding-top: 1.5rem;
+        }
+
+        .pane-footer-section h4 {
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-link {
+            display: block;
+            padding: 0.75rem;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--color-dark);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .resource-link.border-accent {
+            border-left: 3px solid var(--color-cpd);
+        }
+
+        .action-btn-wrapper {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-pill-action {
+            display: inline-block;
+            padding: 0.6rem 1.25rem;
+            border-radius: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .btn-plt-purple { background-color: var(--color-plt); }
+        .btn-cpd-coral { background-color: var(--color-cpd); }
+        .btn-psc-blue { background-color: var(--color-psc); }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .mega-menu-drawer.is-open {
+                flex-direction: column;
+            }
+            .drawer-sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--color-border);
+            }
+            .pane-grid {
+                grid-template-columns: 1fr;
+            }
+            .cpd-header-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-container">
+        <nav class="navbar">
+            <button class="menu-btn" id="menu-toggle" aria-label="Toggle Menu">
+                <span class="menu-icon-wrapper">
+                    <span class="hamburger"></span>
+                    <span class="close-x">&times;</span>
+                </span>
+                <span class="menu-text">Menu</span>
+            </button>
+
+            <a href="#" class="brand-logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 12H12V2Z" fill="#F4B400"/>
+                    <path d="M12 22L22 12H12V22Z" fill="#F4B400"/>
+                    <path d="M22 12L12 2V12H22Z" fill="#F59E0B"/>
+                    <path d="M2 12L12 22V12H2Z" fill="#F59E0B"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-title">Leo Cussen</span>
+                    <span class="logo-subtitle">CENTRE FOR LAW</span>
+                </div>
+            </a>
+
+            <div class="header-actions">
+                <button class="icon-btn" aria-label="Accessibility Settings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+                    </svg>
+                </button>
+                <button class="icon-btn" aria-label="User Account">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </button>
+                <button class="search-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mega Flyout Overlay Drawer -->
+        <div class="mega-menu-drawer" id="side-menu">
+            <!-- Sidebar Navigation List -->
+            <div class="drawer-sidebar">
+                <ul class="side-menu-list">
+                    <li class="menu-item active" data-tab="plt">
+                        <a href="#plt">
+                            <span>Practical Legal Training</span>
+                            <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                        </a>
+                    </li>
+                    <li class="menu-item" data-tab="cpd">
+                        <a href="#cpd">
+                            <span>Continuing Professional Development</span>
+                            <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                        </a>
+                    </li>
+                    <li class="menu-item" data-tab="psc">
+                        <a href="#psc">
+                            <span>Professional Short Courses</span>
+                            <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Content Hub Bottom Tile -->
+                <a href="#content-hub" class="content-hub-card">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=400" alt="Content Hub Laptop">
+                    <div class="hub-label">
+                        <span>Content hub</span>
+                        <span class="hub-arrow">&rarr;</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Dynamic Content Body -->
+            <div class="drawer-content-pane">
+                
+                <!-- 1. Practical Legal Training Tab -->
+                <div class="menu-pane-content active" id="pane-plt">
+                    <div class="pane-header">
+                        <h3>Practical Legal Training</h3>
+                        <p>Your pathway into a legal career.</p>
+                    </div>
+                    
+                    <div class="pane-grid">
+                        <div class="pane-col">
+                            <h4>EXPLORE INTAKES BY STATE</h4>
+                            <ul>
+                                <li><a href="territories.html">Australian Capital Territory</a></li>
+                                <li><a href="#">New South Wales</a></li>
+                                <li><a href="#">Northern Territory</a></li>
+                            </ul>
+                        </div>
+                        <div class="pane-col">
+                            <h4>INFORMATION ABOUT</h4>
+                            <ul>
+                                <li><a href="#">Practical legal training</a></li>
+                                <li><a href="#">Professional placement</a></li>
+                                <li><a href="#">Study options</a></li>
+                            </ul>
+                        </div>
+                        <div class="pane-col">
+                            <h4>OTHER PATHWAYS</h4>
+                            <ul>
+                                <li><a href="#">Supervised legal training</a></li>
+                                <li><a href="#">PLT single topics</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pane-footer-section">
+                        <h4>FEATURED RESOURCES</h4>
+                        <div class="resources-grid">
+                            <a href="#" class="resource-link">PLT program guide</a>
+                            <a href="#" class="resource-link">FAQs</a>
+                            <a href="#" class="resource-link">Your career pack</a>
+                            <a href="#" class="resource-link">Virtual internships</a>
+                        </div>
+                        <div class="action-btn-wrapper">
+                            <a href="#" class="btn-pill-action btn-plt-purple">Find PLT in your state &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Continuing Professional Development Tab -->
+                <div class="menu-pane-content" id="pane-cpd">
+                    <div class="cpd-header-row">
+                        <div class="pane-header">
+                            <h3>Continuing Professional Development</h3>
+                            <p>Strengthen your professional capacity.</p>
+                        </div>
+                        <div class="cpd-search-box">
+                            <label>SEARCH COURSES</label>
+                            <div class="search-input-wrapper">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                                <input type="text" placeholder="">
+                                <button class="btn-dark-sm">Search</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pane-grid">
+                        <div class="pane-col">
+                            <h4>FEATURED</h4>
+                            <ul>
+                                <li><a href="#">AI & technology</a></li>
+                                <li><a href="#">Practice management course</a></li>
+                                <li><a href="#">Trust accounting</a></li>
+                            </ul>
+                        </div>
+                        <div class="pane-col">
+                            <h4>PRACTICE AREA</h4>
+                            <ul>
+                                <li><a href="#">Building & construction</a></li>
+                                <li><a href="#">Criminal law</a></li>
+                                <li><a href="#">Family law</a></li>
+                                <li><a href="#">Litigation</a></li>
+                            </ul>
+                        </div>
+                        <div class="pane-col">
+                            <h4>PROGRAM TYPE</h4>
+                            <ul>
+                                <li><a href="#">Seminars</a></li>
+                                <li><a href="#">Intensives</a></li>
+                                <li><a href="#">Conferences</a></li>
+                                <li><a href="#">Webinars</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pane-footer-section">
+                        <h4>FEATURED CPD COURSES</h4>
+                        <div class="resources-grid cpd-courses">
+                            <a href="#" class="resource-link border-accent">AI-assisted legal drafting & copyright risk</a>
+                            <a href="#" class="resource-link border-accent">NDIS intensive</a>
+                        </div>
+                        <div class="action-btn-wrapper">
+                            <a href="#" class="btn-pill-action btn-cpd-coral">See CPD &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Professional Short Courses Tab -->
+                <div class="menu-pane-content" id="pane-psc">
+                    <div class="pane-header">
+                        <h3>Professional Short Courses</h3>
+                        <p>Short courses designed for professional growth.</p>
+                    </div>
+
+                    <div class="pane-grid single-col">
+                        <div class="pane-col">
+                            <h4>PRACTICE COMPLIANCE</h4>
+                            <ul>
+                                <li><a href="#">Practice management course</a></li>
+                                <li><a href="#">Trust accounting course</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pane-footer-section psc-footer">
+                        <a href="#" class="btn-pill-action btn-psc-blue">See PSC &rarr;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggleBtn = document.getElementById('menu-toggle');
+            const sideMenuDrawer = document.getElementById('side-menu');
+            const menuItems = document.querySelectorAll('.side-menu-list .menu-item');
+            const paneContents = document.querySelectorAll('.menu-pane-content');
+
+            // Toggle main menu drawer display
+            menuToggleBtn.addEventListener('click', () => {
+                const isOpen = sideMenuDrawer.classList.toggle('is-open');
+                menuToggleBtn.classList.toggle('active', isOpen);
+                menuToggleBtn.setAttribute('aria-expanded', isOpen);
+            });
+
+            // Sidebar tab switching functionality
+            menuItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const targetTab = item.getAttribute('data-tab');
+
+                    // Deactivate existing active items
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    paneContents.forEach(pane => pane.classList.remove('active'));
+
+                    // Activate chosen tab and target pane
+                    item.classList.add('active');
+                    const targetPane = document.getElementById(`pane-${targetTab}`);
+                    if (targetPane) {
+                        targetPane.classList.add('active');
+                    }
+                });
+            });
+
+            // Close menu when clicking outside header scope
+            document.addEventListener('click', (event) => {
+                const headerContainer = document.querySelector('.header-container');
+                if (!headerContainer.contains(event.target)) {
+                    sideMenuDrawer.classList.remove('is-open');
+                    menuToggleBtn.classList.remove('active');
+                    menuToggleBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical Legal Training in ACT - Leo Cussen</title>
+    <link rel="stylesheet" href="territories.css">
+</head>
+<body>
+
+    <!-- Header Navigation Bar -->
+    <header class="header-container">
+        <nav class="navbar">
+            <button class="menu-btn" id="menu-toggle" aria-label="Toggle Menu">
+                <span class="hamburger"></span>
+                <span class="menu-text">Menu</span>
+            </button>
+
+            <a href="#" class="brand-logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 12H12V2Z" fill="#F4B400"/>
+                    <path d="M12 22L22 12H12V22Z" fill="#F4B400"/>
+                    <path d="M22 12L12 2V12H22Z" fill="#F59E0B"/>
+                    <path d="M2 12L12 22V12H2Z" fill="#F59E0B"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-title">Leo Cussen</span>
+                    <span class="logo-subtitle">CENTRE FOR LAW</span>
+                </div>
+            </a>
+
+            <div class="header-actions">
+                <button class="icon-btn" aria-label="Accessibility Settings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+                    </svg>
+                </button>
+                <button class="icon-btn" aria-label="User Account">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </button>
+                <button class="search-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Slide-Out Mega Menu Panel -->
+    <div class="side-menu" id="side-menu">
+        <div class="drawer-container">
+            <!-- Sidebar Links -->
+            <ul class="drawer-sidebar">
+                <li class="menu-item active" data-tab="plt">
+                    <a href="#">Practical Legal Training <span class="arrow">&rsaquo;</span></a>
+                </li>
+                <li class="menu-item" data-tab="cpd">
+                    <a href="#">CPD <span class="arrow">&rsaquo;</span></a>
+                </li>
+                <li class="menu-item" data-tab="psc">
+                    <a href="#">Professional Short Courses <span class="arrow">&rsaquo;</span></a>
+                </li>
+                <li class="menu-item" data-tab="about">
+                    <a href="#">About Leo Cussen <span class="arrow">&rsaquo;</span></a>
+                </li>
+            </ul>
+
+            <!-- Dynamic Right Content Panes -->
+            <div class="drawer-content">
+                <!-- PLT Content Pane -->
+                <div class="menu-pane-content active" id="pane-plt">
+                    <div class="pane-column">
+                        <h4>LOCATION & INTAKES</h4>
+                        <ul>
+                            <li><a href="#">Australian Capital Territory</a></li>
+                            <li><a href="#">New South Wales</a></li>
+                            <li><a href="#">Queensland</a></li>
+                            <li><a href="#">Victoria</a></li>
+                            <li><a href="#">Western Australia</a></li>
+                        </ul>
+                    </div>
+                    <div class="pane-column">
+                        <h4>PROGRAM DETAILS</h4>
+                        <ul>
+                            <li><a href="#">Overview & Structure</a></li>
+                            <li><a href="#">Placement Support</a></li>
+                            <li><a href="#">Fees & Funding</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CPD Content Pane -->
+                <div class="menu-pane-content" id="pane-cpd">
+                    <div class="pane-column">
+                        <h4>CPD COURSES</h4>
+                        <ul>
+                            <li><a href="#">Annual Compliance</a></li>
+                            <li><a href="#">On-Demand Seminars</a></li>
+                            <li><a href="#">Live Webinars</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Short Courses Pane -->
+                <div class="menu-pane-content" id="pane-psc">
+                    <div class="pane-column">
+                        <h4>SHORT COURSES</h4>
+                        <ul>
+                            <li><a href="#">Practical Legal Skills</a></li>
+                            <li><a href="#">Specialist Practice Areas</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- About Pane -->
+                <div class="menu-pane-content" id="pane-about">
+                    <div class="pane-column">
+                        <h4>ABOUT LEO CUSSEN</h4>
+                        <ul>
+                            <li><a href="#">Our Story</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <main class="page-wrapper">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="sub-label">
+                    <span class="badge-tag"></span> CHOOSE THE RIGHT START
+                </div>
+                <h1 class="hero-heading">PRACTICAL LEGAL TRAINING IN THE AUSTRALIAN CAPITAL TERRITORY</h1>
+                <p class="hero-lead">A clear pathway from study into your legal career, with practical training, personalised support and real world experience from day one.</p>
+            </div>
+            <div class="hero-media">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=900" alt="Legal professional with tablet" class="curved-hero-img">
+            </div>
+        </section>
+
+        <!-- Intakes & Filter Section -->
+        <section class="intakes-section">
+            <div class="filter-bar">
+                <div class="toggle-group">
+                    <button class="toggle-btn active" data-type="fulltime">Full-time</button>
+                    <button class="toggle-btn" data-type="parttime">Part-time</button>
+                </div>
+                <div class="filter-controls">
+                    <select class="filter-select">
+                        <option value="all">Learning modes</option>
+                        <option value="online">Online</option>
+                        <option value="blended">Blended</option>
+                    </select>
+                    <div class="date-input-wrapper">
+                        <input type="text" value="09/02/2026" class="date-input">
+                        <svg class="calendar-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="intakes-grid" id="intakes-grid">
+                <!-- Card 1 -->
+                <div class="intake-card">
+                    <div class="card-tags">
+                        <span class="tag">ONLINE</span>
+                        <span class="tag">FULL-TIME</span>
+                        <span class="tag tag-yellow">CLOSING SOON</span>
+                    </div>
+                    <h3 class="card-title">September 2026 (National)</h3>
+                    <div class="card-dates">
+                        <div class="dates-header"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> <strong>Dates</strong></div>
+                        <div class="date-row"><span>Start date:</span> <span>21 September 2026</span></div>
+                        <div class="date-row"><span>Census date:</span> <span>19 October 2026</span></div>
+                        <div class="date-row"><span>End date:</span> <span>19 February 2027</span></div>
+                    </div>
+                    <button class="accordion-toggle">Show more <span class="arrow">&#x25BC;</span></button>
+                    <a href="#" class="btn-enrol">Enrol</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="intake-card">
+                    <div class="card-tags">
+                        <span class="tag">ONLINE</span>
+                        <span class="tag">FULL-TIME</span>
+                    </div>
+                    <h3 class="card-title">December 2026 (National)</h3>
+                    <div class="card-dates">
+                        <div class="dates-header"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> <strong>Dates</strong></div>
+                        <div class="date-row"><span>Start date:</span> <span>7 December 2026</span></div>
+                        <div class="date-row"><span>Census date:</span> <span>18 January 2027</span></div>
+                        <div class="date-row"><span>End date:</span> <span>7 May 2027</span></div>
+                    </div>
+                    <button class="accordion-toggle">Show more <span class="arrow">&#x25BC;</span></button>
+                    <a href="#" class="btn-enrol">Enrol</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="intake-card">
+                    <div class="card-tags">
+                        <span class="tag">ONLINE</span>
+                        <span class="tag">FULL-TIME</span>
+                    </div>
+                    <h3 class="card-title">January 2027 (National)</h3>
+                    <div class="card-dates">
+                        <div class="dates-header"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> <strong>Dates</strong></div>
+                        <div class="date-row"><span>Start date:</span> <span>25 January 2027</span></div>
+                        <div class="date-row"><span>Census date:</span> <span>22 February 2027</span></div>
+                        <div class="date-row"><span>End date:</span> <span>11 June 2027</span></div>
+                    </div>
+                    <button class="accordion-toggle">Show more <span class="arrow">&#x25BC;</span></button>
+                    <a href="#" class="btn-enrol">Enrol</a>
+                </div>
+            </div>
+
+            <div class="see-all-wrapper">
+                <button class="btn-see-all" id="see-all-btn">See all</button>
+            </div>
+        </section>
+
+        <!-- Feature Banner Section -->
+        <section class="banner-section">
+            <div class="banner-overlay"></div>
+            <div class="banner-content">
+                <h2>Built for your legal career</h2>
+                <p>For more than 50 years, Leo Cussen has been preparing future lawyers for successful legal careers. Through practical learning, personalised support and flexible study options, you’ll build the capability, real world experience and confidence employers look for in future lawyers.</p>
+                <div class="banner-buttons">
+                    <a href="#" class="btn-primary-yellow">Book a call</a>
+                    <a href="#" class="btn-outline-white">Explore the program</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Mode Accordion Section -->
+        <section class="study-mode-section">
+            <h2 class="section-heading">Choose your study mode</h2>
+            <p class="section-subtext">Flexible study options allow you choose from multiple intakes throughout the year, making it easier to fit PLT around work, study and life commitments.</p>
+            
+            <div class="accordion-cards-container">
+                <div class="study-card">
+                    <div class="study-card-header">
+                        <h3>Full-time</h3>
+                        <button class="circle-chevron">&#x25BC;</button>
+                    </div>
+                </div>
+
+                <div class="study-card expanded">
+                    <div class="study-card-header">
+                        <h3>Part-time</h3>
+                        <button class="circle-chevron">&#x25B2;</button>
+                    </div>
+                    <div class="study-card-body">
+                        <h4>Duration</h4>
+                        <ul><li>30-weeks</li></ul>
+                        
+                        <h4>Weekly hours</h4>
+                        <ul><li>15–20 hours per week</li></ul>
+                        
+                        <h4>Learning modes*</h4>
+                        <ul>
+                            <li>Online – 10 days of online workshops</li>
+                            <li>Blended – 10 days of onsite workshops (15 days for NSW)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Section -->
+        <section class="why-choose-section">
+            <div class="sub-label">
+                <span class="badge-tag"></span> TRUSTED BY PROFESSIONALS
+            </div>
+            <h2 class="section-heading-large">Why choose Leo Cussen</h2>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="#F4B400"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 6V4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" fill="none" stroke="#F4B400" stroke-width="2"/></svg>
+                    </div>
+                    <h3>Real world training</h3>
+                    <p>Develop practical legal skills through real world learning and legal tasks that reflect how lawyers work today.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="#F4B400"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0 1 13 0"/></svg>
+                    </div>
+                    <h3>Personalised support</h3>
+                    <p>Receive guidance from practising lawyer mentors who provide support throughout the program.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="#F4B400"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                    </div>
+                    <h3>Flexible learning</h3>
+                    <p>Choose from full-time or part-time pathways, multiple learning modes and specialist areas.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#F4B400" stroke-width="2"/><polyline points="22 4 12 14.01 9 11.01" stroke="#F4B400" stroke-width="2"/></svg>
+                    </div>
+                    <h3>Job ready confidence</h3>
+                    <p>Build the capability, practical experience and confidence to take the next step in your career.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Pack Banner -->
+        <section class="banner-section career-pack-banner">
+            <div class="banner-overlay dark-overlay"></div>
+            <div class="banner-content">
+                <h2>Your career pack</h2>
+                <p>Wondering what comes after your law degree? You’re not alone. We’ve created a guide to help you understand each stage of becoming a lawyer, with practical resources to support you from Practical Legal Training through to admission and your first legal role.</p>
+                <div class="banner-buttons">
+                    <a href="#" class="btn-primary-yellow">Explore now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admission in ACT Section -->
+        <section class="hero-section getting-started-section">
+            <div class="hero-content">
+                <div class="sub-label">
+                    <span class="badge-tag"></span> GETTING STARTED
+                </div>
+                <h2 class="hero-heading">Planning to apply for admission in the ACT?</h2>
+                <p class="hero-lead">To become an admitted lawyer in the Australian Capital Territory, you’ll need to apply through the ACT Legal Practitioners Admission Board. Admission applications are considered by the Supreme Court of the ACT. Use the link below to check the latest admission requirements for the ACT. If you have any questions along the way, our team is here to help.</p>
+            </div>
+            <div class="hero-media">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=900" alt="Legal team consultation" class="curved-hero-img">
+            </div>
+        </section>
+
+    </main>
+
+    <script src="territories.js"></script>
+</body>
+</html>
